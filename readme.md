@@ -16,7 +16,7 @@ docker build -t cc .
 docker run -i -t -p 8888:8888 cc npm run start:babel-node
 ```
 
-## Running tests
+## Running tests
 
 ```
 npm test
