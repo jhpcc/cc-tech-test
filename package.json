@@ -1,0 +1,63 @@
+{
+  "name": "cc",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "npm run start:babel-node",
+    "start:dev": "webpack --watch & nodemon --exec \"babel-node ./src/server\"",
+    "start:babel-node": "babel-node ./src/server",
+    "build": "webpack",
+    "lighthouse": "mkdir lighthouse-results & npm run start:babel-node & lighthouse --output-path \"lighthouse-results/report.html\" http://localhost:8888/",
+    "accessibility": "npm run start:babel-node & npx pa11y http://localhost:8888/",
+    "test": "jest",
+    "lint": "npm run prettier & eslint src/**/*.js test/**/*.js",
+    "prettier": "prettier --write \"{src,test}/**/*.js\"",
+    "prettier-watch": "onchange \"{src,test}/**/*.js\" -- prettier --write {{changed}}"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "date-diff": "^0.2.1",
+    "eslint": "^5.9.0",
+    "express": "^4.16.4",
+    "react": "^16.7.0-alpha.2",
+    "react-dom": "^16.7.0-alpha.2",
+    "response-time": "^2.3.2",
+    "styled-components": "^4.1.1",
+    "webpack": "^4.25.1",
+    "webpack-cli": "^3.1.2"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.1.5",
+    "@babel/core": "^7.1.6",
+    "@babel/node": "^7.0.0",
+    "@babel/preset-env": "^7.1.6",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.4",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-jest": "^23.6.0",
+    "babel-plugin-styled-components": "^1.8.0",
+    "enzyme": "^3.7.0",
+    "enzyme-adapter-react-16": "^1.7.0",
+    "eslint-config-prettier": "^3.3.0",
+    "eslint-plugin-prettier": "^3.0.0",
+    "he": "^1.2.0",
+    "jest": "^23.6.0",
+    "jest-environment-enzyme": "^7.0.1",
+    "jest-enzyme": "^7.0.1",
+    "lighthouse": "^4.0.0-alpha.1",
+    "nodemon": "^1.18.6",
+    "prettier": "1.15.2",
+    "regenerator-runtime": "^0.12.1"
+  },
+  "eslintIgnore": [
+    "webpack.config.js",
+    "static.html"
+  ],
+  "jest": {
+    "setupTestFrameworkScriptFile": "jest-enzyme",
+    "testEnvironment": "enzyme"
+  }
+}
